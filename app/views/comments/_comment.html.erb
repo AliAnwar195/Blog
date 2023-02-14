@@ -1,15 +1,17 @@
-<% unless comment.archived? %>
-    <p>
-        <strong><%= comment.commenter %>: </strong> 
-        <%= comment.body %>
+<ul class="list-group">
+    <% unless comment.archived? %>
+        <li class="list-group-item">
+            <strong><%= comment.commenter %>: </strong> 
+            <%= comment.body %>
+            
+            <%= link_to "Delete", [comment.article, comment], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+            },
+            class:"btn btn-primary btn-sm text-right"
+            %>
+            
+        </li>
         
-        <%= link_to "Delete", [comment.article, comment], data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-        },
-        class:"btn btn-primary btn-sm"
-        %>
-        
-    </p>
-    
-<%end%>
+    <%end%>
+</ul>

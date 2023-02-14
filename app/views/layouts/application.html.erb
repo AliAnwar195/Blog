@@ -18,18 +18,30 @@
     <div class="container">
       <% if user_signed_in? %>
         <ul class="nav justify-content-end">
+        <li class="nav-item" style="margin-top: 16px ;" >
+          
+          <%= link_to "Home", root_path, :class => "btn" %>
+        </li>
+          <li class="nav-item" style="margin-top: 23px ;" >
+          
+            <% if current_user.has_role? :admin %>
+              Admin
+            <% else %>
+              User
+            <%end%>
+          
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" ><%= link_to("Account Setting", edit_user_registration_path, :class => "btn") %> </a>
           </li>
-          <li class="nav-item">
-            
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link"> 
               <%= button_to('Logout', destroy_user_session_path, :method => :delete, data:{turbo: :false}, class: "btn btn-primary")%>
             </a>
           </li>
-      
+
+          
         </ul>
       
         

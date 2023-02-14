@@ -1,3 +1,10 @@
-<h1>Edit Article</h1>
+<% if current_user.has_role? :admin%>
 
-<%= render "form", article: @article %>
+    <h1>Edit Article</h1>
+        <%= render "form", article: @article %>
+
+<%else %>
+
+    <%= render partial:'users/error' %>
+
+<% end %>   

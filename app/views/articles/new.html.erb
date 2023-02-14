@@ -1,4 +1,12 @@
+<% if current_user.has_role? :admin%>
 <%= link_to "Back", :back %>
 <h1>New Article</h1>
 
 <%= render "form", article: @article %>
+   
+
+<%else %>
+
+<%= render partial:'users/error' %>
+
+<% end %>
