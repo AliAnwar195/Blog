@@ -74,3 +74,5 @@ end
 gem 'devise'
 
 gem "rolify"
+
+gem 'jquery-rails'
